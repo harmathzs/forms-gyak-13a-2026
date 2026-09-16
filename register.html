@@ -322,6 +322,44 @@
       </form>
 
       <script>
+        var validateForm = ({form, data}) => {
+          if (!data.first_name) {
+            console.warn("First name is empty!")
+          } else {
+            if (data.first_name.length <2) {
+              console.warn("First name is too short!")
+            } else {
+              if (data.first_name.length >30) {
+                console.warn("First name is too long!")
+              }
+            }
+          }
+
+          if (!data.email) {
+            console.warn("Email is empty!")
+          } else {
+            if (!data.email.includes("@")) {
+              console.warn("Email must include @ symbol.")
+            } else {
+              if (!data.email.includes(".")) {
+                console.warn("Email must include . symbol.")
+              }
+            }
+          }
+
+          if (!data.password) {
+            console.warn("You must register with a password!")
+          } else {
+            if (!data.confirm_password) {
+              console.warn("Confirm password!")
+            } else {
+              if (data.password != data.confirm_password) {
+                console.warn("The passwords are not equal!")
+              }
+            }
+          }
+        }
+
         const form = document.getElementById("register-form")
         form.addEventListener("submit", async (e)=>{
           e.preventDefault()
@@ -331,45 +369,9 @@
           //console.log("formData", formData)
           //console.log("formData.entries", formData.entries())
           const data = Object.fromEntries(formData.entries())
-          console.log("data", data)
+          //console.log("data", data)
 
-          var validateForm = ({form, data}) => {
-            if (!data.first_name) {
-              console.warn("First name is empty!")
-            } else {
-              if (data.first_name.length <2) {
-                console.warn("First name is too short!")
-              } else {
-                if (data.first_name.length >30) {
-                  console.warn("First name is too long!")
-                }
-              }
-            }
-
-            if (!data.email) {
-              console.warn("Email is empty!")
-            } else {
-              if (!data.email.includes("@")) {
-                console.warn("Email must include @ symbol.")
-              } else {
-                if (!data.email.includes(".")) {
-                  console.warn("Email must include . symbol.")
-                }
-              }
-            }
-
-            if (!data.password) {
-              console.warn("You must register with a password!")
-            } else {
-              if (!data.confirm_password) {
-                console.warn("Confirm password!")
-              } else {
-                if (data.password != data.confirm_password) {
-                  console.warn("The passwords are not equal!")
-                }
-              }
-            }
-          }
+          
           validateForm({form, data})
 
           fetch("https://my.backend.ro:1234/register", {
@@ -382,7 +384,8 @@
           .then(console.log)
           .catch(console.warn)
           .finally( ()=>{
-            window.location.href = "/form-gyak/"
+            alert("Thank you for submitting valid data!")
+            setTimeout( ()=>{ window.location.href = "/form-gyak/" } , 2000)
           } )
         })
       </script>
