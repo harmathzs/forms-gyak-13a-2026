@@ -35,7 +35,7 @@
     </div>
 
     <div class="card">
-      <form action="#" method="post" enctype="multipart/form-data">
+      <form action="register.html" method="post" enctype="multipart/form-data" id="register-form">
         
         <!-- Hidden Input -->
         <input type="hidden" name="form_id" value="reg_2026_99482">
@@ -239,7 +239,7 @@
               <label>Subscription Tier (Radio Buttons)</label>
               <div class="options-group inline">
                 <label class="option-item" for="plan-free">
-                  <input type="radio" id="plan-free" name="subscription_plan" value="free" checked>
+                  <input type="radio" id="plan-free" name="subscription_plan" value="free" checked />
                   <span>Starter (Free)</span>
                 </label>
                 <label class="option-item" for="plan-pro">
@@ -320,6 +320,73 @@
         </div>
 
       </form>
+
+      <script>
+        const form = document.getElementById("register-form")
+        form.addEventListener("submit", async (e)=>{
+          e.preventDefault()
+
+          // Formdata API
+          const formData = new FormData(form)
+          //console.log("formData", formData)
+          //console.log("formData.entries", formData.entries())
+          const data = Object.fromEntries(formData.entries())
+          console.log("data", data)
+
+          var validateForm = ({form, data}) => {
+            if (!data.first_name) {
+              console.warn("First name is empty!")
+            } else {
+              if (data.first_name.length <2) {
+                console.warn("First name is too short!")
+              } else {
+                if (data.first_name.length >30) {
+                  console.warn("First name is too long!")
+                }
+              }
+            }
+
+            if (!data.email) {
+              console.warn("Email is empty!")
+            } else {
+              if (!data.email.includes("@")) {
+                console.warn("Email must include @ symbol.")
+              } else {
+                if (!data.email.includes(".")) {
+                  console.warn("Email must include . symbol.")
+                }
+              }
+            }
+
+            if (!data.password) {
+              console.warn("You must register with a password!")
+            } else {
+              if (!data.confirm_password) {
+                console.warn("Confirm password!")
+              } else {
+                if (data.password != data.confirm_password) {
+                  console.warn("The passwords are not equal!")
+                }
+              }
+            }
+          }
+          validateForm({form, data})
+
+          fetch("https://my.backend.ro:1234/register", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "application/json",
+            }
+          })
+          .then(console.log)
+          .catch(console.warn)
+          .finally( ()=>{
+            window.location.href = "/form-gyak/"
+          } )
+        })
+      </script>
+
     </div>
   </main>
 
