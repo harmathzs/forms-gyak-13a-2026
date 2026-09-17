@@ -34,6 +34,23 @@ app.get("/users", (req, res)=>{
     })
 })
 
+/**
+ * GET /users/:id
+ */
+app.get("/users/:id", (req, res)=>{
+    const {id} = req.params
+
+    const sql = `SELECT id, name, email FROM users WHERE id = ?`
+    conn.query(sql, [+id], (error, result, fields)=>{
+        if (error) {
+            console.warn(`GET /users/${id} error: `+error.message)
+            return res.status(500).json({error})
+        } else {
+            return res.status(200).json({result, fields})
+        }
+    })
+})
+
 const PORT = 3000
 app.listen(PORT, ()=>{
     console.log("Backend server runs on port ", PORT)
