@@ -23,8 +23,15 @@ conn.connect(err => {
  * GET /users
  */
 app.get("/users", (req, res)=>{
-    const data = {}
-    return res.status(200).json(data)
+    const sql = "SELECT id, name, email FROM users"
+    conn.query(sql, (error, result, fields)=>{
+        if (error) {
+            console.warn("GET /users error: "+error.message)
+            return res.status(500).json({error})
+        } else {
+            return res.status(200).json({result, fields})
+        }
+    })
 })
 
 const PORT = 3000
