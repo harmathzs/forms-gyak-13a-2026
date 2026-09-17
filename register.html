@@ -358,6 +358,15 @@
               }
             }
           }
+
+          console.log("Uploadable file name: ", data.avatar.name)
+          console.log("Uploadable file size: ", data.avatar.size)
+
+          if (data.avatar.name && data.avatar.size>0) {
+            const fileUploadElement = document.getElementById("profile-avatar")
+            const file = fileUploadElement.files[0]
+            // TODO - read content with FileReader API
+          }
         }
 
         const form = document.getElementById("register-form")
@@ -369,7 +378,8 @@
           //console.log("formData", formData)
           //console.log("formData.entries", formData.entries())
           const data = Object.fromEntries(formData.entries())
-          //console.log("data", data)
+          console.log("data", data)
+          console.log("data.avatar json", JSON.stringify(data.avatar))
 
           
           validateForm({form, data})
@@ -385,7 +395,9 @@
           .catch(console.warn)
           .finally( ()=>{
             alert("Thank you for submitting valid data!")
-            setTimeout( ()=>{ window.location.href = "/form-gyak/" } , 2000)
+            setTimeout( ()=>{ 
+              // TODO window.location.href = "/form-gyak/" 
+            } , 2000)
           } )
         })
       </script>
