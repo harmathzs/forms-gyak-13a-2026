@@ -6,7 +6,7 @@
     <title>Forms</title>
 </head>
 <body>
-    <form action="http://localhost:3000/name" method="post">
+    <form action="http://localhost:3000/name" method="post" enctype="application/x-www-form-urlencoded">
         <!-- POST /name -->
         <input type="text" name="name" />
         <input type="submit" />
@@ -14,9 +14,9 @@
 
     <hr />
 
-    <form action="http://localhost:3000/avatar" method="post">
+    <form action="http://localhost:3000/avatar" method="post" enctype="multipart/form-data">
         <!-- POST /avatar -->
-        <input type="file" name="avatar" />
+        <input type="file" name="file" />
         <input type="submit" />
     </form>
 </body>
