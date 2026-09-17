@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Forms Practice - Register</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Upper Navigation Menu Bar -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <span>Form</span>Craft
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="register.html" class="nav-link active">Register</a></li>
+          <li><a href="login.html" class="nav-link">Login</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-header">
+      <h1 class="page-title">Comprehensive Registration Form</h1>
+      <p class="page-subtitle">
+        Explore every major HTML5 input component, validation constraint, and form element.
+      </p>
+    </div>
+
+    <div class="card">
+      <form action="register.html" method="post" enctype="multipart/form-data" id="register-form">
+        
+        <!-- Hidden Input -->
+        <input type="hidden" name="form_id" value="reg_2026_99482">
+        <input type="hidden" name="timestamp" value="2026-09-15T12:00:00Z">
+
+        <!-- Fieldset 1: Basic Account Information -->
+        <fieldset>
+          <legend>1. Personal &amp; Account Details</legend>
+          <div class="form-grid two-cols">
+            
+            <!-- First Name (text) -->
+            <div class="form-group">
+              <label for="first-name">First Name <span style="color: var(--color-danger);">*</span></label>
+              <input type="text" id="first-name" name="first_name" placeholder="Jane" required minlength="2" maxlength="30" autocomplete="given-name">
+              <span class="helper-text">Letters only, 2-30 characters</span>
+            </div>
+
+            <!-- Last Name (text) -->
+            <div class="form-group">
+              <label for="last-name">Last Name <span style="color: var(--color-danger);">*</span></label>
+              <input type="text" id="last-name" name="last_name" placeholder="Doe" required minlength="2" maxlength="30" autocomplete="family-name">
+            </div>
+
+            <!-- Email (email) -->
+            <div class="form-group">
+              <label for="user-email">Email Address <span style="color: var(--color-danger);">*</span></label>
+              <input type="email" id="user-email" name="email" placeholder="jane.doe@example.com" required autocomplete="email">
+              <span class="helper-text">Must be a valid email format</span>
+            </div>
+
+            <!-- Phone (tel) -->
+            <div class="form-group">
+              <label for="user-phone">Phone Number</label>
+              <input type="tel" id="user-phone" name="phone" placeholder="+1 (555) 000-0000" pattern="[\+]?[0-9\s\-\(\)]{7,20}" autocomplete="tel">
+              <span class="helper-text">Include country code if applicable</span>
+            </div>
+
+            <!-- Password (password) -->
+            <div class="form-group">
+              <label for="user-password">Password <span style="color: var(--color-danger);">*</span></label>
+              <input type="password" id="user-password" name="password" placeholder="••••••••" required minlength="8" autocomplete="new-password">
+              <span class="helper-text">Minimum 8 characters</span>
+            </div>
+
+            <!-- Confirm Password (password) -->
+            <div class="form-group">
+              <label for="confirm-password">Confirm Password <span style="color: var(--color-danger);">*</span></label>
+              <input type="password" id="confirm-password" name="confirm_password" placeholder="••••••••" required minlength="8" autocomplete="new-password">
+            </div>
+
+            <!-- Portfolio Website (url) -->
+            <div class="form-group">
+              <label for="portfolio-url">Website / Portfolio (URL)</label>
+              <input type="url" id="portfolio-url" name="portfolio" placeholder="https://example.com" autocomplete="url">
+            </div>
+
+            <!-- Quick Search / Lookup (search) -->
+            <div class="form-group">
+              <label for="user-search">Skill Search (Search Input)</label>
+              <input type="search" id="user-search" name="skill_query" placeholder="Type a skill or tool to search...">
+            </div>
+
+          </div>
+        </fieldset>
+
+        <!-- Fieldset 2: Numbers, Dates & Times -->
+        <fieldset>
+          <legend>2. Numeric, Date &amp; Time Pickers</legend>
+          <div class="form-grid three-cols">
+
+            <!-- Age / Quantity (number) -->
+            <div class="form-group">
+              <label for="user-age">Age (Years)</label>
+              <input type="number" id="user-age" name="age" min="16" max="120" step="1" placeholder="25">
+              <span class="helper-text">Allowed range: 16 - 120</span>
+            </div>
+
+            <!-- Date Picker (date) -->
+            <div class="form-group">
+              <label for="birth-date">Date of Birth (Date)</label>
+              <input type="date" id="birth-date" name="birth_date" min="1900-01-01" max="2015-12-31">
+            </div>
+
+            <!-- Time Picker (time) -->
+            <div class="form-group">
+              <label for="preferred-time">Preferred Contact Time (Time)</label>
+              <input type="time" id="preferred-time" name="preferred_time">
+            </div>
+
+            <!-- DateTime Local (datetime-local) -->
+            <div class="form-group">
+              <label for="onboarding-slot">Onboarding Slot (DateTime)</label>
+              <input type="datetime-local" id="onboarding-slot" name="onboarding_slot">
+            </div>
+
+            <!-- Month Picker (month) -->
+            <div class="form-group">
+              <label for="grad-month">Graduation Month (Month)</label>
+              <input type="month" id="grad-month" name="grad_month">
+            </div>
+
+            <!-- Week Picker (week) -->
+            <div class="form-group">
+              <label for="start-week">Preferred Start Week (Week)</label>
+              <input type="week" id="start-week" name="start_week">
+            </div>
+
+          </div>
+        </fieldset>
+
+        <!-- Fieldset 3: Custom Controls, Colors, Files & Sliders -->
+        <fieldset>
+          <legend>3. Custom Controls, Sliders &amp; Files</legend>
+          <div class="form-grid two-cols">
+
+            <!-- Color Picker (color) -->
+            <div class="form-group">
+              <label for="theme-color">Brand / Profile Accent (Color Picker)</label>
+              <input type="color" id="theme-color" name="theme_color" value="#4f46e5">
+              <span class="helper-text">Select your preferred accent color</span>
+            </div>
+
+            <!-- File Upload (file) -->
+            <div class="form-group">
+              <label for="profile-avatar">Avatar / Resume (File Upload)</label>
+              <input type="file" id="profile-avatar" name="avatar" accept="image/*,.pdf,.doc,.docx">
+              <span class="helper-text">Supports images and PDF documents</span>
+            </div>
+
+            <!-- Range Slider (range) -->
+            <div class="form-group">
+              <label for="exp-range">
+                <span>HTML / CSS Proficiency (Range Slider)</span>
+                <span class="helper-text">0 to 100</span>
+              </label>
+              <div class="range-container">
+                <span style="font-size: 0.8rem; color: var(--color-text-muted);">Beginner</span>
+                <input type="range" id="exp-range" name="proficiency" min="0" max="100" step="5" value="70" list="tickmarks">
+                <span style="font-size: 0.8rem; color: var(--color-text-muted);">Expert</span>
+              </div>
+              <datalist id="tickmarks">
+                <option value="0" label="0%"></option>
+                <option value="25" label="25%"></option>
+                <option value="50" label="50%"></option>
+                <option value="75" label="75%"></option>
+                <option value="100" label="100%"></option>
+              </datalist>
+            </div>
+
+            <!-- Datalist Autocomplete Input -->
+            <div class="form-group">
+              <label for="primary-role">Primary Role (Datalist Autocomplete)</label>
+              <input type="text" id="primary-role" name="role" list="role-options" placeholder="Start typing a role...">
+              <datalist id="role-options">
+                <option value="Frontend Developer">
+                <option value="Backend Developer">
+                <option value="Full-Stack Developer">
+                <option value="UI/UX Designer">
+                <option value="DevOps Engineer">
+                <option value="QA / Test Engineer">
+                <option value="Product Manager">
+              </datalist>
+              <span class="helper-text">Suggestions populated from HTML &lt;datalist&gt;</span>
+            </div>
+
+          </div>
+        </fieldset>
+
+        <!-- Fieldset 4: Selections, Radios & Checkboxes -->
+        <fieldset>
+          <legend>4. Selection Menus, Radios &amp; Checkboxes</legend>
+          <div class="form-grid two-cols">
+
+            <!-- Select with optgroups -->
+            <div class="form-group">
+              <label for="country-region">Region &amp; Country (Select with Optgroup) <span style="color: var(--color-danger);">*</span></label>
+              <select id="country-region" name="country" required>
+                <option value="" disabled selected>-- Choose your country --</option>
+                <optgroup label="North America">
+                  <option value="US">United States</option>
+                  <option value="CA">Canada</option>
+                  <option value="MX">Mexico</option>
+                </optgroup>
+                <optgroup label="Europe">
+                  <option value="UK">United Kingdom</option>
+                  <option value="DE">Germany</option>
+                  <option value="FR">France</option>
+                  <option value="ES">Spain</option>
+                </optgroup>
+                <optgroup label="Asia Pacific">
+                  <option value="JP">Japan</option>
+                  <option value="AU">Australia</option>
+                  <option value="IN">India</option>
+                  <option value="SG">Singapore</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <!-- Radio Group: Subscription Plan -->
+            <div class="form-group">
+              <label>Subscription Tier (Radio Buttons)</label>
+              <div class="options-group inline">
+                <label class="option-item" for="plan-free">
+                  <input type="radio" id="plan-free" name="subscription_plan" value="free" checked />
+                  <span>Starter (Free)</span>
+                </label>
+                <label class="option-item" for="plan-pro">
+                  <input type="radio" id="plan-pro" name="subscription_plan" value="pro">
+                  <span>Pro ($19/mo)</span>
+                </label>
+                <label class="option-item" for="plan-enterprise">
+                  <input type="radio" id="plan-enterprise" name="subscription_plan" value="enterprise">
+                  <span>Enterprise</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Checkboxes: Interests -->
+            <div class="form-group" style="grid-column: 1 / -1;">
+              <label>Topics of Interest (Checkboxes)</label>
+              <div class="options-group inline">
+                <label class="option-item" for="topic-html">
+                  <input type="checkbox" id="topic-html" name="interests" value="html" checked>
+                  <span>Semantic HTML5</span>
+                </label>
+                <label class="option-item" for="topic-css">
+                  <input type="checkbox" id="topic-css" name="interests" value="css" checked>
+                  <span>Modern CSS / Grid / Flexbox</span>
+                </label>
+                <label class="option-item" for="topic-accessibility">
+                  <input type="checkbox" id="topic-accessibility" name="interests" value="a11y">
+                  <span>Web Accessibility (a11y)</span>
+                </label>
+                <label class="option-item" for="topic-responsive">
+                  <input type="checkbox" id="topic-responsive" name="interests" value="responsive">
+                  <span>Responsive Design</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+        </fieldset>
+
+        <!-- Fieldset 5: Textarea & Consent -->
+        <fieldset>
+          <legend>5. Biography &amp; Terms</legend>
+          
+          <!-- Textarea -->
+          <div class="form-group">
+            <label for="user-bio">
+              <span>Bio / Notes (Textarea)</span>
+              <span class="helper-text">Max 500 characters</span>
+            </label>
+            <textarea id="user-bio" name="bio" rows="4" maxlength="500" placeholder="Tell us a little about your background, goals, or projects..."></textarea>
+          </div>
+
+          <!-- Mandatory Checkbox -->
+          <div class="form-group" style="margin-top: 1rem;">
+            <label class="option-item" for="agree-terms">
+              <input type="checkbox" id="agree-terms" name="agree_terms" required>
+              <span>I agree to the <a href="#" style="color: var(--color-primary);">Terms of Service</a> and <a href="#" style="color: var(--color-primary);">Privacy Policy</a> <span style="color: var(--color-danger);">*</span></span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- Form Action Buttons -->
+        <div class="form-actions">
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn-primary">
+            <span>&#10003; Complete Registration (Submit)</span>
+          </button>
+          
+          <!-- Reset Button -->
+          <button type="reset" class="btn btn-reset">
+            <span>&#8634; Reset All Fields</span>
+          </button>
+
+          <!-- Standard Custom Button -->
+          <button type="button" class="btn btn-secondary">
+            <span>&#9432; Helper (Button)</span>
+          </button>
+        </div>
+
+      </form>
+
+      <script>
+        var validateForm = ({form, data}) => {
+          if (!data.first_name) {
+            console.warn("First name is empty!")
+          } else {
+            if (data.first_name.length <2) {
+              console.warn("First name is too short!")
+            } else {
+              if (data.first_name.length >30) {
+                console.warn("First name is too long!")
+              }
+            }
+          }
+
+          if (!data.email) {
+            console.warn("Email is empty!")
+          } else {
+            if (!data.email.includes("@")) {
+              console.warn("Email must include @ symbol.")
+            } else {
+              if (!data.email.includes(".")) {
+                console.warn("Email must include . symbol.")
+              }
+            }
+          }
+
+          if (!data.password) {
+            console.warn("You must register with a password!")
+          } else {
+            if (!data.confirm_password) {
+              console.warn("Confirm password!")
+            } else {
+              if (data.password != data.confirm_password) {
+                console.warn("The passwords are not equal!")
+              }
+            }
+          }
+
+          console.log("Uploadable file name: ", data.avatar.name)
+          console.log("Uploadable file size: ", data.avatar.size)
+
+          if (data.avatar.name && data.avatar.size>0) {
+            const fileUploadElement = document.getElementById("profile-avatar")
+            const file = fileUploadElement.files[0]
+            // TODO - read content with FileReader API
+          }
+        }
+
+        const form = document.getElementById("register-form")
+        form.addEventListener("submit", async (e)=>{
+          e.preventDefault()
+
+          // Formdata API
+          const formData = new FormData(form)
+          //console.log("formData", formData)
+          //console.log("formData.entries", formData.entries())
+          const data = Object.fromEntries(formData.entries())
+          console.log("data", data)
+          console.log("data.avatar json", JSON.stringify(data.avatar))
+
+          
+          validateForm({form, data})
+
+          fetch("https://my.backend.ro:1234/register", {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "application/json",
+            }
+          })
+          .then(console.log)
+          .catch(console.warn)
+          .finally( ()=>{
+            alert("Thank you for submitting valid data!")
+            setTimeout( ()=>{ 
+              // TODO window.location.href = "/form-gyak/" 
+            } , 2000)
+          } )
+        })
+      </script>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2026 FormCraft Practice Suite. Pure HTML5 &amp; Modern CSS.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Forms Practice - Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Upper Navigation Menu Bar -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <span>Form</span>Craft
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="register.html" class="nav-link">Register</a></li>
+          <li><a href="login.html" class="nav-link">Login</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <section class="hero-section">
+      <h1 class="hero-title">HTML5 Forms & Controls Lab</h1>
+      <p class="hero-lead">
+        Explore semantic HTML forms, native validation mechanisms, and modern CSS layout techniques without relying on JavaScript frameworks.
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a href="register.html" class="btn btn-primary">Try Registration Form &rarr;</a>
+        <a href="products.html" class="btn btn-secondary">Explore Products &amp; Table</a>
+      </div>
+    </section>
+
+    <!-- Practice Sections Overview -->
+    <div class="features-grid">
+      <!-- Register Card -->
+      <a href="register.html" class="feature-card">
+        <div class="feature-icon">&#128221;</div>
+        <h2 class="feature-title">Comprehensive Register</h2>
+        <p class="feature-description">
+          Demonstrates all HTML5 input types: color picker, date, time, datetime-local, range slider, select with optgroups, datalist, file upload, checkboxes, radio groups, textarea, reset &amp; submit buttons, and hidden inputs.
+        </p>
+        <span class="feature-link-text">Open Register Form &rarr;</span>
+      </a>
+
+      <!-- Login Card -->
+      <a href="login.html" class="feature-card">
+        <div class="feature-icon">&#128274;</div>
+        <h2 class="feature-title">User Authentication</h2>
+        <p class="feature-description">
+          A compact login form showcasing email, password masking, remember-me persistence checkbox, autocomplete attributes, and clean action buttons.
+        </p>
+        <span class="feature-link-text">Open Login Form &rarr;</span>
+      </a>
+
+      <!-- Products Card -->
+      <a href="products.html" class="feature-card">
+        <div class="feature-icon">&#128230;</div>
+        <h2 class="feature-title">Products &amp; Inventory</h2>
+        <p class="feature-description">
+          A structured data table displaying sample items with row-level edit actions, stock badges, and an integrated "+ Add New Product" form.
+        </p>
+        <span class="feature-link-text">Open Products Table &rarr;</span>
+      </a>
+    </div>
+
+    <!-- Quick Reference Section -->
+    <div class="card" style="margin-top: 3rem;">
+      <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1rem; color: var(--color-text-main);">
+        Native HTML5 Form Features in this Project
+      </h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; color: var(--color-text-muted); font-size: 0.95rem;">
+        <div>
+          <strong style="color: var(--color-text-main); display: block; margin-bottom: 0.25rem;">Standard &amp; Custom Inputs</strong>
+          <p>Text, email, password, tel, url, number, search, color picker, date, time, datetime-local, month, week, range.</p>
+        </div>
+        <div>
+          <strong style="color: var(--color-text-main); display: block; margin-bottom: 0.25rem;">Selection Controls</strong>
+          <p>Drop-down selects with grouped options (&lt;optgroup&gt;), predictive search (&lt;datalist&gt;), radio lists, and multi-checkboxes.</p>
+        </div>
+        <div>
+          <strong style="color: var(--color-text-main); display: block; margin-bottom: 0.25rem;">Form Semantics &amp; Actions</strong>
+          <p>Accessible &lt;label&gt; associations, grouped &lt;fieldset&gt; with &lt;legend&gt;, file attachments, and submit/reset/custom buttons.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2026 FormCraft Practice Suite. Pure HTML5 &amp; Modern CSS.</p>
+  </footer>
+
+</body>
+</html>

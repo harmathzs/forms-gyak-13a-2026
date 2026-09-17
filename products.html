@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Forms Practice - Products</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Upper Navigation Menu Bar -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <span>Form</span>Craft
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="register.html" class="nav-link">Register</a></li>
+          <li><a href="login.html" class="nav-link">Login</a></li>
+          <li><a href="products.html" class="nav-link active">Products</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="page-header">
+      <h1 class="page-title">Product Catalog &amp; Inventory</h1>
+      <p class="page-subtitle">View sample inventory items, trigger edit actions, or register new products below.</p>
+    </div>
+
+    <!-- Products Table Section -->
+    <section class="table-responsive">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>SKU / ID</th>
+            <th>Product Name</th>
+            <th>Category</th>
+            <th>Unit Price</th>
+            <th>Stock Status</th>
+            <th style="text-align: right;">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>#PRD-001</strong></td>
+            <td>Wireless Mechanical Keyboard</td>
+            <td>Electronics</td>
+            <td>$129.99</td>
+            <td><span class="badge badge-success">In Stock (42)</span></td>
+            <td style="text-align: right;">
+              <a href="#add-product" class="btn btn-secondary btn-sm">Edit</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>#PRD-002</strong></td>
+            <td>Ergonomic Vertical Mouse</td>
+            <td>Electronics</td>
+            <td>$59.50</td>
+            <td><span class="badge badge-success">In Stock (18)</span></td>
+            <td style="text-align: right;">
+              <a href="#add-product" class="btn btn-secondary btn-sm">Edit</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>#PRD-003</strong></td>
+            <td>Ultra-Wide 34" Curved Monitor</td>
+            <td>Displays</td>
+            <td>$499.00</td>
+            <td><span class="badge badge-warning">Low Stock (3)</span></td>
+            <td style="text-align: right;">
+              <a href="#add-product" class="btn btn-secondary btn-sm">Edit</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>#PRD-004</strong></td>
+            <td>Noise Cancelling Studio Headphones</td>
+            <td>Audio</td>
+            <td>$199.95</td>
+            <td><span class="badge badge-danger">Out of Stock</span></td>
+            <td style="text-align: right;">
+              <a href="#add-product" class="btn btn-secondary btn-sm">Edit</a>
+            </td>
+          </tr>
+          <tr>
+            <td><strong>#PRD-005</strong></td>
+            <td>Solid Oak Standing Desk Mat</td>
+            <td>Accessories</td>
+            <td>$45.00</td>
+            <td><span class="badge badge-success">In Stock (90)</span></td>
+            <td style="text-align: right;">
+              <a href="#add-product" class="btn btn-secondary btn-sm">Edit</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Table Bottom Toolbar with +Add Button -->
+    <div class="table-toolbar">
+      <span style="font-size: 0.9rem; color: var(--color-text-muted);">
+        Showing 5 sample catalog products
+      </span>
+      <a href="#add-product" class="btn btn-primary">
+        + Add New Product
+      </a>
+    </div>
+
+    <!-- Add / Edit Product Form Section -->
+    <section id="add-product" class="card" style="margin-top: 3.5rem;">
+      <h2 style="font-size: 1.35rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--color-text-main);">
+        Add / Edit Product Details
+      </h2>
+      <p style="font-size: 0.925rem; color: var(--color-text-muted); margin-bottom: 1.75rem;">
+        Fill in the product specifications to append a new item into the inventory catalog.
+      </p>
+
+      <form action="#" method="post">
+        
+        <!-- Hidden Item Identifier -->
+        <input type="hidden" name="action_type" value="create_or_update">
+
+        <div class="form-grid two-cols">
+          <!-- Product Name -->
+          <div class="form-group">
+            <label for="prod-name">Product Name <span style="color: var(--color-danger);">*</span></label>
+            <input type="text" id="prod-name" name="product_name" placeholder="e.g. Ergonomic Desk Lamp" required minlength="3" maxlength="100">
+          </div>
+
+          <!-- Product SKU -->
+          <div class="form-group">
+            <label for="prod-sku">SKU Code <span style="color: var(--color-danger);">*</span></label>
+            <input type="text" id="prod-sku" name="sku" placeholder="PRD-006" pattern="[A-Z]{3}-[0-9]{3,6}" required>
+            <span class="helper-text">Format: PRD-000 (3 uppercase letters, dash, numbers)</span>
+          </div>
+
+          <!-- Category -->
+          <div class="form-group">
+            <label for="prod-category">Category <span style="color: var(--color-danger);">*</span></label>
+            <select id="prod-category" name="category" required>
+              <option value="" disabled selected>-- Select Category --</option>
+              <option value="electronics">Electronics &amp; Peripherals</option>
+              <option value="displays">Displays &amp; Monitors</option>
+              <option value="audio">Audio &amp; Headphones</option>
+              <option value="furniture">Furniture &amp; Desks</option>
+              <option value="accessories">Office Accessories</option>
+            </select>
+          </div>
+
+          <!-- Price -->
+          <div class="form-group">
+            <label for="prod-price">Price ($ USD) <span style="color: var(--color-danger);">*</span></label>
+            <input type="number" id="prod-price" name="price" placeholder="49.99" min="0.01" step="0.01" required>
+          </div>
+
+          <!-- Stock Quantity -->
+          <div class="form-group">
+            <label for="prod-stock">Initial Stock Quantity <span style="color: var(--color-danger);">*</span></label>
+            <input type="number" id="prod-stock" name="stock" placeholder="25" min="0" step="1" required>
+          </div>
+
+          <!-- Release / Available Date -->
+          <div class="form-group">
+            <label for="prod-release">Release Date</label>
+            <input type="date" id="prod-release" name="release_date">
+          </div>
+        </div>
+
+        <!-- Description Textarea -->
+        <div class="form-group" style="margin-top: 1.25rem;">
+          <label for="prod-description">Product Description</label>
+          <textarea id="prod-description" name="description" rows="3" placeholder="Provide key features, dimensions, or technical specifications..."></textarea>
+        </div>
+
+        <!-- Active Checkbox -->
+        <div class="form-group" style="margin-top: 1rem;">
+          <label class="option-item" for="prod-active">
+            <input type="checkbox" id="prod-active" name="is_active" checked>
+            <span>Publish immediately (Active in public catalog)</span>
+          </label>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            <span>&#10003; Save Product</span>
+          </button>
+          <button type="reset" class="btn btn-reset">
+            <span>Reset Form</span>
+          </button>
+        </div>
+
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2026 FormCraft Practice Suite. Pure HTML5 &amp; Modern CSS.</p>
+  </footer>
+
+</body>
+</html>

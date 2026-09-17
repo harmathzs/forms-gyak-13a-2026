@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML Forms Practice - Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Upper Navigation Menu Bar -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">
+        <span>Form</span>Craft
+      </a>
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="register.html" class="nav-link">Register</a></li>
+          <li><a href="login.html" class="nav-link active">Login</a></li>
+          <li><a href="products.html" class="nav-link">Products</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="auth-wrapper">
+      <div class="auth-header">
+        <h1 class="page-title">Welcome Back</h1>
+        <p class="page-subtitle">Please enter your credentials to access your account</p>
+      </div>
+
+      <div class="card">
+        <form action="#" method="post">
+          
+          <!-- Hidden Token -->
+          <input type="hidden" name="login_intent" value="user_auth">
+
+          <!-- Email / Username -->
+          <div class="form-group">
+            <label for="login-email">Email Address <span style="color: var(--color-danger);">*</span></label>
+            <input type="email" id="login-email" name="email" placeholder="jane.doe@example.com" required autocomplete="username">
+          </div>
+
+          <!-- Password -->
+          <div class="form-group">
+            <label for="login-password">
+              <span>Password <span style="color: var(--color-danger);">*</span></span>
+              <a href="#" style="font-size: 0.8rem; color: var(--color-primary); text-decoration: none;">Forgot password?</a>
+            </label>
+            <input type="password" id="login-password" name="password" placeholder="••••••••" required minlength="6" autocomplete="current-password">
+          </div>
+
+          <!-- Remember Me Checkbox -->
+          <div class="form-group" style="margin-top: 1rem;">
+            <label class="option-item" for="remember-me">
+              <input type="checkbox" id="remember-me" name="remember_me" value="true">
+              <span>Keep me signed in for 30 days</span>
+            </label>
+          </div>
+
+          <!-- Submit Action -->
+          <div style="margin-top: 1.5rem;">
+            <button type="submit" class="btn btn-primary btn-block">
+              Sign In to Account
+            </button>
+          </div>
+
+        </form>
+      </div>
+
+      <div class="auth-footer">
+        Don't have an account yet? <a href="register.html">Create an account</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>&copy; 2026 FormCraft Practice Suite. Pure HTML5 &amp; Modern CSS.</p>
+  </footer>
+
+</body>
+</html>

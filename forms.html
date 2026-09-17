@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms</title>
+</head>
+<body>
+    <form action="http://localhost:3000/name" method="post" enctype="application/x-www-form-urlencoded">
+        <!-- POST /name -->
+        <input type="text" name="name" />
+        <input type="submit" />
+    </form>
+
+    <hr />
+
+    <form action="http://localhost:3000/avatar" method="post" enctype="multipart/form-data">
+        <!-- POST /avatar -->
+        <input type="file" name="file" />
+        <input type="submit" />
+    </form>
+</body>
+</html>
