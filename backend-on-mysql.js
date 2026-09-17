@@ -51,6 +51,22 @@ app.get("/users/:id", (req, res)=>{
     })
 })
 
+/**
+ * POST /users
+ */
+app.post("/users", (req, res)=>{
+    const {name, email, password} = req.body
+    const sql = `INSERT INTO users (name, email, password) VALUES (?, ?, ?)`
+    conn.query(sql, [name, email, password], (error, result, fields)=>{
+        if (error) {
+            console.warn(`POST /users error: `+error.message)
+            return res.status(500).json({error})
+        } else {
+            return res.status(200).json({result})
+        }
+    })
+})
+
 const PORT = 3000
 app.listen(PORT, ()=>{
     console.log("Backend server runs on port ", PORT)
