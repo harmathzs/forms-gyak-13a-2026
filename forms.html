@@ -6,15 +6,17 @@
     <title>Forms</title>
 </head>
 <body>
-    <form>
-        <input type="text" />
+    <form action="http://localhost:3000/name" method="post">
+        <!-- POST /name -->
+        <input type="text" name="name" />
         <input type="submit" />
     </form>
 
     <hr />
 
-    <form>
-        <input type="file" />
+    <form action="http://localhost:3000/avatar" method="post">
+        <!-- POST /avatar -->
+        <input type="file" name="avatar" />
         <input type="submit" />
     </form>
 </body>
