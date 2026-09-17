@@ -62,7 +62,7 @@ app.post("/users", (req, res)=>{
             console.warn(`POST /users error: `+error.message)
             return res.status(500).json({error})
         } else {
-            return res.status(200).json({result})
+            return res.status(201).json({result})
         }
     })
 })
