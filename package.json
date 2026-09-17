@@ -20,6 +20,7 @@
   "dependencies": {
     "express": "^5.2.1",
     "multer": "^2.4.0",
+    "mysql2": "^3.24.4",
     "pnpm": "^12.4.2"
   }
 }
