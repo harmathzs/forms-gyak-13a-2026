@@ -167,6 +167,34 @@ app.delete("/users/:id", (req, res)=>{
     })
 })
 
+/**
+ * POST /login
+ */
+app.post("/login", (req, res)=>{
+    const {id, name, email, password} = req.body
+    const sql = "SELECT id, name, email, password AS hash FROM users WHERE email = ?"
+    conn.query(sql, [email], (error, result, fields)=>{
+        // létezik, oké, na és a jelszó amit megadott?
+        if (error) {
+            console.warn(error)
+            return res.status(404).json({error})
+        } else {
+            console.log("Login sql result", result)
+            const hash = result[0].hash
+            bcrypt.compare(password, hash, (error2, same)=>{
+                if (error2) {
+                    console.warn(error2)
+                    return res.status(500).json({error2})
+                } else {
+                    console.log("Same? ", same)
+                    return res.status(200).json({id, name, email, isLoggedIn: same})
+                }
+            })
+            
+        }
+    })
+})
+
 const PORT = 3000
 app.listen(PORT, ()=>{
     console.log("Backend server runs on port ", PORT)
