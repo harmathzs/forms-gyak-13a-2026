@@ -1,8 +1,11 @@
 const express = require("express")
 const mysql = require("mysql2")
+const bcrypt = require("bcrypt")
 const app = express()
 
 app.use(express.json())
+
+const saltRounds = 10
 
 const conn = mysql.createConnection({
     host: "localhost",
@@ -72,14 +75,24 @@ app.post("/users", (req, res)=>{
                 return res.status(409).json({error: `Existing user wants to re-register? ${found.email}`})
             } else {
                 const sql2 = `INSERT INTO users (name, email, password) VALUES (?, ?, ?)`
-                conn.query(sql2, [name, email, password], (error2, result2, fields2)=>{
-                    if (error2) {
-                        console.warn(`POST /users error: `+error2.message)
-                        return res.status(500).json({error: error2})
+
+                bcrypt.hash(password, saltRounds, (error3, hash)=>{
+                    if (error3) {
+                        console.warn(error3)
+                        return res.status(500).json({error: error3})
                     } else {
-                        return res.status(201).json({result: result2})
+                        conn.query(sql2, [name, email, hash], (error2, result2, fields2)=>{
+                            if (error2) {
+                                console.warn(`POST /users error: `+error2.message)
+                                return res.status(500).json({error: error2})
+                            } else {
+                                return res.status(201).json({result: result2})
+                            }
+                        })
                     }
                 })
+
+
             }
         }
     })
