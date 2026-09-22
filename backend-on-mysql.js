@@ -85,6 +85,55 @@ app.post("/users", (req, res)=>{
     })
 })
 
+/**
+ * PUT /users/:id
+ */
+app.put("/users/:id", (req, res)=>{
+    const {id} = req.params
+    if (+id <= 1) {
+        return res.status(403).json({error: "Don't touch admin id=1 !"})
+    }
+
+    const {name, email, password} = req.body
+    if (!name && !email && !password) {
+        const message = `No data to update with!`
+        console.warn(message)
+        return res.status(400).json({error: message})
+    } else {
+        const fieldParams = []
+        let fieldValues = []
+        if (name) {
+            fieldParams.push(`name=?`)
+            fieldValues.push(name)
+        }
+        if (email) {
+            fieldParams.push(`email=?`)
+            fieldValues.push(email)
+        }
+        if (password) {
+            fieldParams.push(`password=?`)
+            fieldValues.push(password)
+        }
+        fieldValues = [...fieldValues, +id]
+        const sql = `UPDATE users SET ${fieldParams.join(',')} WHERE id=?`
+        console.log("fieldParams", fieldParams)
+        console.log("fieldValues", fieldValues)
+        console.log("UPDATE SET sql: ", sql)
+
+        conn.query(sql, fieldValues, (error, result, fields)=>{
+            if (error) {
+                console.warn(error)
+                return res.status(500).json({error})
+            } else {
+                const resultWithId = {...result, id: +id }
+                return res.status(200).json({result: resultWithId})
+            }
+        })
+
+        //return res.status(200).json({todo: "TODO"})
+    }
+})
+
 const PORT = 3000
 app.listen(PORT, ()=>{
     console.log("Backend server runs on port ", PORT)
