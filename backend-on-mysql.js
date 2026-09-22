@@ -134,6 +134,26 @@ app.put("/users/:id", (req, res)=>{
     }
 })
 
+/**
+ * DELETE /users/:id
+ */
+app.delete("/users/:id", (req, res)=>{
+    const {id} = req.params
+    if (+id <= 1) {
+        return res.status(403).json({error: "Don't touch admin id=1 !"})
+    }
+
+    const sql = "DELETE FROM users WHERE id = ?"
+    conn.query(sql, [id], (error, result, fields)=>{
+        if (error) {
+            console.warn(error)
+            return res.status(500).json({error})
+        } else {
+            return res.status(200).json({result})
+        }
+    })
+})
+
 const PORT = 3000
 app.listen(PORT, ()=>{
     console.log("Backend server runs on port ", PORT)
