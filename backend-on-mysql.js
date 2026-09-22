@@ -29,7 +29,7 @@ app.get("/users", (req, res)=>{
             console.warn("GET /users error: "+error.message)
             return res.status(500).json({error})
         } else {
-            return res.status(200).json({result, fields})
+            return res.status(200).json({result})
         }
     })
 })
@@ -46,7 +46,7 @@ app.get("/users/:id", (req, res)=>{
             console.warn(`GET /users/${id} error: `+error.message)
             return res.status(500).json({error})
         } else {
-            return res.status(200).json({result, fields})
+            return res.status(200).json({result}) 
         }
     })
 })
@@ -56,13 +56,31 @@ app.get("/users/:id", (req, res)=>{
  */
 app.post("/users", (req, res)=>{
     const {name, email, password} = req.body
-    const sql = `INSERT INTO users (name, email, password) VALUES (?, ?, ?)`
-    conn.query(sql, [name, email, password], (error, result, fields)=>{
-        if (error) {
-            console.warn(`POST /users error: `+error.message)
-            return res.status(500).json({error})
+    const sql1 = "SELECT id, name, email FROM users"
+    conn.query(sql1, (error1, result1, fields1)=>{
+        if (error1) {
+            console.warn(`POST /users error: `+error1.message)
+            return res.status(500).json({error: error1})            
         } else {
-            return res.status(201).json({result})
+            console.log("result1", result1)
+
+            const found = result1.find( user => user.email == email )
+            console.log("found", found)
+
+            if (found) {
+                console.warn(`Existing user wants to re-register? ${found.email}`)
+                return res.status(409).json({error: `Existing user wants to re-register? ${found.email}`})
+            } else {
+                const sql2 = `INSERT INTO users (name, email, password) VALUES (?, ?, ?)`
+                conn.query(sql2, [name, email, password], (error2, result2, fields2)=>{
+                    if (error2) {
+                        console.warn(`POST /users error: `+error2.message)
+                        return res.status(500).json({error: error2})
+                    } else {
+                        return res.status(201).json({result: result2})
+                    }
+                })
+            }
         }
     })
 })
